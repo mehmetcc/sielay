@@ -2,6 +2,7 @@ package org.mehmetcc.parser;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,6 +22,22 @@ class ValidatorTest {
     var output = dut.check(input);
 
     assertThat(output).isEmpty();
+  }
+
+  @Test
+  void noTokensGivenShouldGenerateFailure() {
+    var input = new ArrayList<Token>();
+    var output = dut.check(input);
+
+    assertThat(output).isNotEmpty().contains("Empty command.");
+  }
+
+  @Test
+  void noCommandGivenShouldGenerateFailure() {
+    var input = List.of(Token.flag("--hehe"));
+    var output = dut.check(input);
+
+    assertThat(output).isNotEmpty().contains("No commands given.");
   }
 
   @Test

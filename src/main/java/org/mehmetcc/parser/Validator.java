@@ -42,7 +42,7 @@ class Validator {
 
   private Boolean checkIfEmptyList(final List<Token> tokens) {
     if (tokens.isEmpty()) {
-      failures.add("No arguments given.");
+      failures.add("Empty command.");
       return true;
     }
     return false;
@@ -63,19 +63,6 @@ class Validator {
         return;
       }
     }
-  }
-
-  private Boolean checkIfCommandsAreEmpty(final List<Token> tokens) {
-    var filtered = tokens.stream()
-        .filter(current -> current.getType() == TokenType.COMMAND)
-        .map(Token::getContent)
-        .toList();
-
-    if (filtered.isEmpty()) {
-      failures.add("Unknown command.");
-      return true;
-    }
-    return false;
   }
 
   private void checkFirstCommand(final List<Token> tokens) {
