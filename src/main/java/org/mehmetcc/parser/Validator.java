@@ -34,7 +34,7 @@ class Validator {
     checkFirstCommand(tokens);
     checkValidCommand(tokens);
     checkIfArgumentsAreCorrect(tokens);
-    checkMultipleCommands(tokens);
+    checkNumberOfCommands(tokens);
     checkValidFlags(tokens);
     checkSeperator(tokens);
     checkArgumentCount(tokens);
@@ -53,14 +53,29 @@ class Validator {
         .filter(current -> current.getType() == TokenType.COMMAND)
         .map(Token::getContent)
         .toList();
-    var valid = ParserConstants.COMMANDS.keySet().stream().toList();
+    var validCommands = ParserConstants.COMMANDS.keySet()
+        .stream()
+        .toList();
 
     for (String command : filtered) {
-      if (!valid.contains(command)) {
+      if (!validCommands.contains(command)) {
         failures.add("Unknown command.");
         return;
       }
     }
+  }
+
+  private Boolean checkIfCommandsAreEmpty(final List<Token> tokens) {
+    var filtered = tokens.stream()
+        .filter(current -> current.getType() == TokenType.COMMAND)
+        .map(Token::getContent)
+        .toList();
+
+    if (filtered.isEmpty()) {
+      failures.add("Unknown command.");
+      return true;
+    }
+    return false;
   }
 
   private void checkFirstCommand(final List<Token> tokens) {
@@ -106,11 +121,11 @@ class Validator {
 
     if (foundAtIndex == -1) { // where no seperator is around
       if (argumentCount != 1) {
-        failures.add("Faulty number of arguments.");
+        failures.add("Faulty number of arguments. Either seperator or file path is missing.");
       }
     } else { // there is a seperator
       if (argumentCount != 2) {
-        failures.add("Faulty number of arguments.");
+        failures.add("Faulty number of arguments. Either seperator or file path is missing.");
       }
     }
   }
@@ -130,13 +145,16 @@ class Validator {
     return found;
   }
 
-  private void checkMultipleCommands(final List<Token> tokens) {
+  private void checkNumberOfCommands(final List<Token> tokens) {
     var filtered = tokens.stream()
         .filter(current -> current.getType() == TokenType.COMMAND)
         .toList();
 
-    if (filtered.size() != 1) {
-      failures.add("Multiple commands given");
+    if (filtered.size() == 0) {
+      failures.add("No commands given.");
+    }
+    else if (filtered.size() != 1) {
+      failures.add("Multiple commands given.");
     }
   }
 

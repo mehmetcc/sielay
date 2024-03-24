@@ -4,27 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="984f1b0c-2cb0-4a6c-a20c-71e11d6aee28" name="Changes" comment="Add basic parsing scaffolding">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/command/CliCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/command/CliCommandClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/command/FillDataCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/command/ShredCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/io/Printer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/parser/ParsingResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/nasreddin_hodja.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/queen-of-hearts.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/mehmetcc/command/FillDataCommandTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/mehmetcc/command/ShredCommandTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="984f1b0c-2cb0-4a6c-a20c-71e11d6aee28" name="Changes" comment="Add fill-data and shred commands, complete parser">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mehmetcc/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mehmetcc/parser/Lexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/parser/Lexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mehmetcc/parser/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/parser/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mehmetcc/parser/ParserConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/parser/ParserConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mehmetcc/parser/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/parser/Token.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/mehmetcc/parser/Validator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/parser/Validator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/mehmetcc/parser/ValidatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/mehmetcc/parser/ValidatorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +96,7 @@
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.mehmetcc.Main" />
       <module name="sielay.main" />
-      <option name="PROGRAM_PARAMETERS" value="shred ananbaban.txt -S ; -V" />
+      <option name="PROGRAM_PARAMETERS" value="shrefdssfsfddsfd -S" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.mehmetcc.*" />
@@ -248,6 +230,14 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Gradle.FillDataCommandTest" />
+      <item itemvalue="Gradle.FillDataCommandTest.validPathGivenShouldWriteFile" />
+      <item itemvalue="Gradle.LexerTest.singleCommandWithStringFieldGivenShouldScanAndGenerateList" />
+      <item itemvalue="Gradle.Tests in 'sielay.test'" />
+      <item itemvalue="Gradle.ValidatorTest" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.LexerTest.singleCommandWithStringFieldGivenShouldScanAndGenerateList" />
@@ -274,7 +264,14 @@
       <option name="project" value="LOCAL" />
       <updated>1711275868010</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Add fill-data and shred commands, complete parser">
+      <created>1711318706518</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1711318706518</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -290,7 +287,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add basic parsing scaffolding" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add basic parsing scaffolding" />
+    <MESSAGE value="Add fill-data and shred commands, complete parser" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add fill-data and shred commands, complete parser" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

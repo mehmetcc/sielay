@@ -61,7 +61,7 @@ class ValidatorTest {
 
     assertThat(output).hasSize(1)
         .element(0)
-        .isEqualTo("Multiple commands given");
+        .isEqualTo("Multiple commands given.");
   }
 
   @Test
@@ -92,7 +92,7 @@ class ValidatorTest {
     var output = dut.check(input);
 
     assertThat(output).isNotEmpty()
-        .contains("Faulty number of arguments.");
+        .contains("Faulty number of arguments. Either seperator or file path is missing.");
   }
 
   @Test
@@ -105,7 +105,7 @@ class ValidatorTest {
     var output = dut.check(input);
 
     assertThat(output).isNotEmpty()
-        .contains("Faulty number of arguments.");
+        .contains("Faulty number of arguments. Either seperator or file path is missing.");
   }
 
   @Test
