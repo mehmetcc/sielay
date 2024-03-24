@@ -8,16 +8,16 @@ import java.util.Map;
 
 public class ParserConstants {
 
-  static final String SHRED = "shred";
-  static final String FILL_DATA = "fill-data";
-  static final String DUMP_DB = "dump-db";
+  public static final String SHRED = "shred";
+  public static final String FILL_DATA = "fill-data";
+  public static final String DUMP_DB = "dump-db";
 
-  static final String HELP = "--help";
-  static final String HELP_SHORTENED = "-H";
-  static final String VERBOSE = "--verbose";
-  static final String VERBOSE_SHORTENED = "-V";
-  static final String SEPERATOR = "--seperator";
-  static final String SEPERATOR_SHORTENED = "-S";
+  public static final String HELP = "--help";
+  public static final String HELP_SHORTENED = "-H";
+  public static final String VERBOSE = "--verbose";
+  public static final String VERBOSE_SHORTENED = "-V";
+  public static final String SEPERATOR = "--seperator";
+  public static final String SEPERATOR_SHORTENED = "-S";
 
 
   static final Map<String, TokenType> COMMANDS;

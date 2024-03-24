@@ -3,6 +3,7 @@ package org.mehmetcc.parser;
 import static org.mehmetcc.parser.ParserConstants.*;
 import static org.mehmetcc.parser.TokenType.STRING;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,6 +13,11 @@ class Lexer {
 
   // This actually generates an AST (essentially a list, since the syntax is linear), so indexes are important.
   List<Token> scan(final List<String> args) {
+    if (args.size() == 0) return new ArrayList<Token>();
+    else return mapTokens(args);
+  }
+
+  private List<Token> mapTokens(final List<String> args) {
     return args.stream()
         .map(this::match)
         .collect(Collectors.toList());

@@ -25,7 +25,8 @@ class ValidatorTest {
 
   @Test
   void unknownFlagGivenShouldGenerateFailure() {
-    var input = List.of(Token.command("dump-db"), Token.flag("--hoho"));
+    var input = List.of(Token.command("dump-db"), new Token(TokenType.STRING, "my/file/is/here"),
+        Token.flag("--hoho"));
     var output = dut.check(input);
 
     assertThat(output).hasSize(1)
@@ -81,5 +82,41 @@ class ValidatorTest {
 
     assertThat(output).isNotEmpty()
         .contains("Seperator flag is declared but no seperator has been given.");
+  }
+
+  @Test
+  void multipleArgumentsGivenShouldGenerateFailure() {
+    var input = List.of(Token.command("dump-db"),
+        new Token(TokenType.STRING, "/some/path/here"),
+        new Token(TokenType.STRING, "/some/other/path/here"));
+    var output = dut.check(input);
+
+    assertThat(output).isNotEmpty()
+        .contains("Faulty number of arguments.");
+  }
+
+  @Test
+  void multipleArgumentsWithSeperatorGivenShouldGenerateFailure() {
+    var input = List.of(Token.command("dump-db"),
+        new Token(TokenType.STRING, "/some/path/here"),
+        Token.flag("--seperator"),
+        new Token(TokenType.STRING, ":::"),
+        new Token(TokenType.STRING, "/some/other/path/here"));
+    var output = dut.check(input);
+
+    assertThat(output).isNotEmpty()
+        .contains("Faulty number of arguments.");
+  }
+
+  @Test
+  void pathRequiringCommandWithNoPathGivenShouldGenerateFailure() {
+    var input = List.of(Token.command("fill-data"),
+        Token.flag("--seperator"),
+        new Token(TokenType.STRING, ":::")
+    );
+    var output = dut.check(input);
+
+    assertThat(output).isNotEmpty()
+        .contains("No path string given.");
   }
 }

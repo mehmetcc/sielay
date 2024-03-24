@@ -6,16 +6,16 @@ public class Token {
 
   private final String content;
 
-  Token(TokenType type, String content) {
+  public Token(TokenType type, String content) {
     this.type = type;
     this.content = content;
   }
 
-  static Token command(String lexeme) {
+  public static Token command(String lexeme) {
     return new Token(TokenType.COMMAND, lexeme);
   }
 
-  static Token flag(String lexeme) {
+  public static Token flag(String lexeme) {
     return new Token(TokenType.FLAG, lexeme);
   }
 

@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Validator {
+  // TODO BIG TODO BIG BIG
+  // TODO Currently, this whole flow does not concerns itself with --help flag
+  // TODO hence, if program --help is run, it would print out a failure, saying
+  // TODO no commands have been given.
 
   private final List<String> failures;
 
@@ -12,6 +16,12 @@ class Validator {
   }
 
   List<String> check(final List<Token> tokens) {
+    if (checkIfEmptyList(tokens)) {
+      return failures;
+    }
+
+    // TODO another if else should be over here, one running runValidations while other running
+    // TODO runHelpValidations
     runValidations(tokens);
     return failures;
   }
@@ -23,9 +33,19 @@ class Validator {
     // manipulating data outside of Kleisli's scope, hence this current setup.
     checkFirstCommand(tokens);
     checkValidCommand(tokens);
+    checkIfArgumentsAreCorrect(tokens);
     checkMultipleCommands(tokens);
     checkValidFlags(tokens);
     checkSeperator(tokens);
+    checkArgumentCount(tokens);
+  }
+
+  private Boolean checkIfEmptyList(final List<Token> tokens) {
+    if (tokens.isEmpty()) {
+      failures.add("No arguments given.");
+      return true;
+    }
+    return false;
   }
 
   private void checkValidCommand(final List<Token> tokens) {
@@ -51,6 +71,17 @@ class Validator {
     }
   }
 
+  private void checkIfArgumentsAreCorrect(final List<Token> tokens) {
+    var first = tokens.get(0);
+
+    if (first.getContent().equals(ParserConstants.SHRED) || first.getContent()
+        .equals(ParserConstants.FILL_DATA)) {
+      if (tokens.get(1).getType() != TokenType.STRING) {
+        failures.add("No path string given.");
+      }
+    }
+  }
+
   private void checkSeperator(final List<Token> tokens) {
     var foundAtIndex = findSeperator(tokens);
 
@@ -62,6 +93,24 @@ class Validator {
         }
       } else {
         failures.add("Seperator flag is declared but no seperator has been given.");
+      }
+    }
+  }
+
+  private void checkArgumentCount(final List<Token> tokens) {
+    var foundAtIndex = findSeperator(tokens);
+    var argumentCount = tokens.stream()
+        .filter(current -> current.getType() == TokenType.STRING)
+        .toList()
+        .size();
+
+    if (foundAtIndex == -1) { // where no seperator is around
+      if (argumentCount != 1) {
+        failures.add("Faulty number of arguments.");
+      }
+    } else { // there is a seperator
+      if (argumentCount != 2) {
+        failures.add("Faulty number of arguments.");
       }
     }
   }
