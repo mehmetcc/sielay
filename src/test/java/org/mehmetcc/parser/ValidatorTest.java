@@ -111,7 +111,7 @@ class ValidatorTest {
     var output = dut.check(input);
 
     assertThat(output).isNotEmpty()
-        .contains("Faulty number of arguments. Probably the file path is missing.");
+        .contains("Faulty number of arguments. Either the seperator or the file path is missing.");
   }
 
   @Test
@@ -124,7 +124,18 @@ class ValidatorTest {
     var output = dut.check(input);
 
     assertThat(output).isNotEmpty()
-        .contains("Faulty number of arguments. Probably the seperator is missing.");
+        .contains("Faulty number of arguments. Either the seperator or the file path is missing.");
+  }
+
+  @Test
+  void seperatorFlagUsedWithFaultyCommandShouldGenerateFailure() {
+    var input = List.of(Token.command("shred"),
+        Token.flag("--seperator"),
+        new Token(TokenType.STRING, ";"));
+    var output = dut.check(input);
+
+    assertThat(output).isNotEmpty()
+        .contains("Seperator flag can only be used with fill-data command");
   }
 
   @Test

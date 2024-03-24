@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="984f1b0c-2cb0-4a6c-a20c-71e11d6aee28" name="Changes" comment="Fix some bugs">
+    <list default="true" id="984f1b0c-2cb0-4a6c-a20c-71e11d6aee28" name="Changes" comment="Fix some failure messages">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/context/ApplicationContext.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mehmetcc/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mehmetcc/parser/Validator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/parser/Validator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +50,7 @@
         <option value="Interface" />
         <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Record" />
       </list>
     </option>
   </component>
@@ -92,11 +94,11 @@
       <recent name="org.mehmetcc.command" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Gradle.ValidatorTest">
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.mehmetcc.Main" />
       <module name="sielay.main" />
-      <option name="PROGRAM_PARAMETERS" value="shred -S -V ;" />
+      <option name="PROGRAM_PARAMETERS" value="fill-data -S ; -V" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.mehmetcc.*" />
@@ -116,29 +118,6 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
-    </configuration>
-    <configuration name="FillDataCommandTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;org.mehmetcc.command.FillDataCommandTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
     </configuration>
     <configuration name="LexerTest.singleCommandWithStringFieldGivenShouldScanAndGenerateList" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -207,6 +186,29 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="ValidatorTest.seperatorFlagUsedWithFaultyCommandShouldGenerateFailure" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;org.mehmetcc.parser.ValidatorTest.seperatorFlagUsedWithFaultyCommandShouldGenerateFailure&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="ValidatorTest.unknownCommandGivenShouldGenerateFailure" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -232,19 +234,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
+      <item itemvalue="Gradle.ValidatorTest.seperatorFlagUsedWithFaultyCommandShouldGenerateFailure" />
       <item itemvalue="Gradle.ValidatorTest.unknownCommandGivenShouldGenerateFailure" />
-      <item itemvalue="Gradle.FillDataCommandTest" />
       <item itemvalue="Gradle.LexerTest.singleCommandWithStringFieldGivenShouldScanAndGenerateList" />
       <item itemvalue="Gradle.Tests in 'sielay.test'" />
       <item itemvalue="Gradle.ValidatorTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.ValidatorTest" />
+        <item itemvalue="Gradle.ValidatorTest.seperatorFlagUsedWithFaultyCommandShouldGenerateFailure" />
         <item itemvalue="Gradle.Tests in 'sielay.test'" />
         <item itemvalue="Gradle.ValidatorTest.unknownCommandGivenShouldGenerateFailure" />
         <item itemvalue="Gradle.LexerTest.singleCommandWithStringFieldGivenShouldScanAndGenerateList" />
-        <item itemvalue="Gradle.ValidatorTest" />
-        <item itemvalue="Gradle.FillDataCommandTest" />
       </list>
     </recent_temporary>
   </component>
@@ -278,7 +280,28 @@
       <option name="project" value="LOCAL" />
       <updated>1711320185409</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Fix some failure messages">
+      <created>1711320584320</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1711320584320</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Fix some failure messages">
+      <created>1711321332877</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1711321332877</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Fix some failure messages">
+      <created>1711321522652</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1711321522652</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -296,7 +319,8 @@
     <MESSAGE value="Add basic parsing scaffolding" />
     <MESSAGE value="Add fill-data and shred commands, complete parser" />
     <MESSAGE value="Fix some bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix some bugs" />
+    <MESSAGE value="Fix some failure messages" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix some failure messages" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -306,17 +330,12 @@
           <line>43</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/mehmetcc/parser/Validator.java</url>
-          <line>155</line>
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/sielay$ShredCommandTest.ic" NAME="ShredCommandTest Coverage Results" MODIFIED="1711303173627" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/sielay$ValidatorTest.ic" NAME="ValidatorTest Coverage Results" MODIFIED="1711313902745" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sielay$ValidatorTest.ic" NAME="ValidatorTest Coverage Results" MODIFIED="1711321236588" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/sielay$FillDataCommandTest.ic" NAME="FillDataCommandTest Coverage Results" MODIFIED="1711311473999" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/sielay$Tests_in__sielay_test_.ic" NAME="Tests in 'sielay.test' Coverage Results" MODIFIED="1711275877531" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/sielay$FillDataCommandTest_validPathGivenShouldWriteFile.ic" NAME="FillDataCommandTest.validPathGivenShouldWriteFile Coverage Results" MODIFIED="1711311167680" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
