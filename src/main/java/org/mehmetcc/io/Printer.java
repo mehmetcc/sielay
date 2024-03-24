@@ -12,13 +12,13 @@ public class Printer {
     this.isVerbose = false;
   }
 
-  public void printLine(String content) {
+  public void printLine(final String content) {
     if (isVerbose) {
       System.out.println(content);
     }
   }
 
-  public void printError(String content) {
+  public void printError(final String content) {
     System.out.println(content);
   }
 }
