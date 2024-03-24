@@ -111,7 +111,7 @@ class ValidatorTest {
     var output = dut.check(input);
 
     assertThat(output).isNotEmpty()
-        .contains("Faulty number of arguments. Either seperator or file path is missing.");
+        .contains("Faulty number of arguments. Probably the file path is missing.");
   }
 
   @Test
@@ -124,7 +124,7 @@ class ValidatorTest {
     var output = dut.check(input);
 
     assertThat(output).isNotEmpty()
-        .contains("Faulty number of arguments. Either seperator or file path is missing.");
+        .contains("Faulty number of arguments. Probably the seperator is missing.");
   }
 
   @Test

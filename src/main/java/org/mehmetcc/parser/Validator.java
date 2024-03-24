@@ -110,11 +110,11 @@ class Validator {
 
     if (foundAtIndex == -1) { // where no seperator is around
       if (argumentCount != 1) {
-        failures.add("Faulty number of arguments. Either seperator or file path is missing.");
+        failures.add("Faulty number of arguments. Probably the file path is missing.");
       }
     } else { // there is a seperator
       if (argumentCount != 2) {
-        failures.add("Faulty number of arguments. Either seperator or file path is missing.");
+        failures.add("Faulty number of arguments. Probably the seperator is missing.");
       }
     }
   }
