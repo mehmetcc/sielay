@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="984f1b0c-2cb0-4a6c-a20c-71e11d6aee28" name="Changes" comment="Fix some failure messages">
+    <list default="true" id="984f1b0c-2cb0-4a6c-a20c-71e11d6aee28" name="Changes" comment="Fix argument protection">
       <change afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/context/ApplicationContext.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/context/ApplicationContextConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/context/ApplicationContextDeserializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/context/ApplicationContextSerializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mehmetcc/parser/Validator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/parser/Validator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mehmetcc/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,9 +52,9 @@
         <option value="AnnotationType" />
         <option value="Enum" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
         <option value="Record" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -94,7 +98,7 @@
       <recent name="org.mehmetcc.command" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.ValidatorTest">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.mehmetcc.Main" />
       <module name="sielay.main" />
@@ -301,7 +305,21 @@
       <option name="project" value="LOCAL" />
       <updated>1711321522652</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Add some validations">
+      <created>1711322064506</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1711322064506</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Fix argument protection">
+      <created>1711322533420</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1711322533420</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -320,22 +338,13 @@
     <MESSAGE value="Add fill-data and shred commands, complete parser" />
     <MESSAGE value="Fix some bugs" />
     <MESSAGE value="Fix some failure messages" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix some failure messages" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/mehmetcc/command/ShredCommand.java</url>
-          <line>43</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Add some validations" />
+    <MESSAGE value="Fix argument protection" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix argument protection" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/sielay$ShredCommandTest.ic" NAME="ShredCommandTest Coverage Results" MODIFIED="1711303173627" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/sielay$ValidatorTest.ic" NAME="ValidatorTest Coverage Results" MODIFIED="1711321236588" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sielay$ValidatorTest.ic" NAME="ValidatorTest Coverage Results" MODIFIED="1711321959302" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/sielay$FillDataCommandTest.ic" NAME="FillDataCommandTest Coverage Results" MODIFIED="1711311473999" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/sielay$Tests_in__sielay_test_.ic" NAME="Tests in 'sielay.test' Coverage Results" MODIFIED="1711275877531" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/sielay$FillDataCommandTest_validPathGivenShouldWriteFile.ic" NAME="FillDataCommandTest.validPathGivenShouldWriteFile Coverage Results" MODIFIED="1711311167680" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
