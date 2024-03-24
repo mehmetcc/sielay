@@ -11,7 +11,7 @@ public class Main {
   public static void main(String[] args) {
     Parser parser = new Parser();
     CliCommandClient client = new CliCommandClient();
-
+    
     //List<String> arguments = List.of("shred", "C:\\Users\\Knuth\\Desktop\\Projects\\sielay\\sadadsads.txt", "-V");
 
     List<String> arguments = Arrays.asList(args);

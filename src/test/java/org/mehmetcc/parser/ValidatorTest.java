@@ -71,7 +71,8 @@ class ValidatorTest {
     var output = dut.check(input);
 
     assertThat(output).isNotEmpty()
-        .contains("Seperator flag is declared but no seperator has been given.");
+        .contains(
+            "Seperator flag is declared but no seperator has been given. Seperator should be positioned just after the flag itself.");
   }
 
   @Test
@@ -81,7 +82,8 @@ class ValidatorTest {
     var output = dut.check(input);
 
     assertThat(output).isNotEmpty()
-        .contains("Seperator flag is declared but no seperator has been given.");
+        .contains(
+            "Seperator flag is declared but no seperator has been given. Seperator should be positioned just after the flag itself.");
   }
 
   @Test

@@ -104,10 +104,12 @@ class Validator {
       if (foundAtIndex + 1 < tokens.size()) {
         var lookup = tokens.get(foundAtIndex + 1);
         if (lookup.getType() != TokenType.STRING) {
-          failures.add("Seperator flag is declared but no seperator has been given.");
+          failures.add(
+              "Seperator flag is declared but no seperator has been given. Seperator should be positioned just after the flag itself.");
         }
       } else {
-        failures.add("Seperator flag is declared but no seperator has been given.");
+        failures.add(
+            "Seperator flag is declared but no seperator has been given. Seperator should be positioned just after the flag itself.");
       }
     }
   }
@@ -152,8 +154,7 @@ class Validator {
 
     if (filtered.size() == 0) {
       failures.add("No commands given.");
-    }
-    else if (filtered.size() != 1) {
+    } else if (filtered.size() != 1) {
       failures.add("Multiple commands given.");
     }
   }
