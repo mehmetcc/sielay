@@ -1,5 +1,6 @@
 package org.mehmetcc.command;
 
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
 import org.mehmetcc.context.ApplicationContextDeserializer;
@@ -29,7 +30,7 @@ public class DumpDatabaseCommand implements CliCommand {
       final FileContext fileContext,
       final DatabaseConnector databaseConnector, final
       ApplicationContextDeserializer applicationContextDeserializer) {
-    this.printer = new Printer();
+    this.printer = printer;
     this.fileContext = fileContext;
     this.databaseConnector = databaseConnector;
     this.applicationContextDeserializer = applicationContextDeserializer;
@@ -46,12 +47,14 @@ public class DumpDatabaseCommand implements CliCommand {
     return result.path()
         .map(path -> result.seperator()
             .map(seperator -> extractAndApplyFile(path.toString(), seperator.getContent()))
-            .orElseGet(
-                () -> extractAndApplyFile(path.toString(), CommandConstants.DEFAULT_SEPERATOR))
-        ).orElseGet(() -> extractAndApplyApplicationContext());
+            .orElseGet(() -> extractAndApplyFile(path.toString(), CommandConstants.DEFAULT_SEPERATOR)))
+        .orElseGet(() -> extractAndApplyApplicationContext());
   }
 
   private List<String> extractAndApplyFile(final String path, final String seperator) {
+    if (!fileContext.exists(Path.of(path)))
+      return List.of();
+
     var content = fileContext.read(path);
     var lines = lines(content, seperator);
     databaseConnector.fill(lines);

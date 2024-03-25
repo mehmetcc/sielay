@@ -1,6 +1,7 @@
 package org.mehmetcc.command;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -25,7 +26,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @ExtendWith(MockitoExtension.class)
 class DumpDatabaseCommandTest {
   @Mock
- Printer printer;
+  Printer printer;
 
   @Mock
   FileContext fileContext;
@@ -76,6 +77,7 @@ class DumpDatabaseCommandTest {
 
     // Stubbing
     when(fileContext.read("some\\path")).thenReturn("ehehe:::bisiler:::yazdim");
+    when(fileContext.exists(any())).thenReturn(true);
     doNothing().when(databaseConnector).fill(List.of("ehehe", "bisiler", "yazdim"));
 
     // Interaction
@@ -83,6 +85,7 @@ class DumpDatabaseCommandTest {
 
     // Verification
     verify(fileContext).read("some\\path");
+    verify(fileContext).exists(any());
     verify(databaseConnector).fill(List.of("ehehe", "bisiler", "yazdim"));
 
     // Assertions
@@ -102,6 +105,7 @@ class DumpDatabaseCommandTest {
 
     // Stubbing
     when(fileContext.read("some\\path")).thenReturn("ehehe;;bisiler;;yazdim");
+    when(fileContext.exists(any())).thenReturn(true);
     doNothing().when(databaseConnector).fill(List.of("ehehe", "bisiler", "yazdim"));
 
     // Interaction
@@ -109,11 +113,34 @@ class DumpDatabaseCommandTest {
 
     // Verification
     verify(fileContext).read("some\\path");
+    verify(fileContext).exists(any());
     verify(databaseConnector).fill(List.of("ehehe", "bisiler", "yazdim"));
 
     // Assertions
     assertThat(result).isNotEmpty()
         .hasSize(3)
         .isEqualTo(List.of("ehehe", "bisiler", "yazdim"));
+  }
+
+  @Test
+  void whenNonExistingPathGivenShouldReturnEmptyListAndTerminate() {
+    // Data Preparation
+    var data = new ParsingResult(Token.command("dump-db"),
+        Optional.of(Path.of("some/path")),
+        false,
+        false,
+        Optional.of(new Token(TokenType.STRING, ";;")));
+
+    // Stubbing
+    when(fileContext.exists(any())).thenReturn(false);
+
+    // Interaction
+    var result = dumpDatabaseCommand.execute(data);
+
+    // Verification
+    verify(fileContext).exists(any());
+
+    // Assertions
+    assertThat(result).isEmpty();
   }
 }
