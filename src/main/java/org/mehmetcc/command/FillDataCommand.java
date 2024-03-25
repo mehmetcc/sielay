@@ -1,85 +1,74 @@
 package org.mehmetcc.command;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.mehmetcc.context.ApplicationContext;
 import org.mehmetcc.context.ApplicationContextSerializer;
+import org.mehmetcc.io.FileContext;
 import org.mehmetcc.io.Printer;
+import org.mehmetcc.parser.ParserConstants;
 import org.mehmetcc.parser.ParsingResult;
 
 public class FillDataCommand implements CliCommand {
-
-  private static final String DEFAULT_SEPERATOR = ":::";
-
   private final String sourcePath;
 
   private final Printer printer;
+
+  private final FileContext fileContext;
 
   private final ApplicationContextSerializer serializer;
 
   public FillDataCommand(final Printer printer) {
     this.printer = printer;
     this.sourcePath = "src/main/resources/queen-of-hearts.txt";
+    this.fileContext = new FileContext(this.printer);
     this.serializer = new ApplicationContextSerializer(printer);
   }
 
-  public FillDataCommand(final Printer printer, final String sourcePath) {
+  public FillDataCommand(final String sourcePath, final Printer printer) {
     this.printer = printer;
     this.sourcePath = sourcePath;
+    this.fileContext = new FileContext(this.printer);
     this.serializer = new ApplicationContextSerializer(printer);
   }
 
+  public FillDataCommand(final String sourcePath,
+      final Printer printer,
+      final FileContext fileContext,
+      final ApplicationContextSerializer serializer) {
+    this.printer = printer;
+    this.sourcePath = sourcePath;
+    this.fileContext = fileContext;
+    this.serializer = serializer;
+  }
 
   @Override
-  public void execute(final ParsingResult result) {
-    overwriteFile(result, readSourceFile());
-    printer.printLine(
-        "Successfully printed to file at %s".formatted(
-            result.path().orElse(Path.of("")).toString()));
+  public List<String> execute(final ParsingResult result) {
+    var parsed = extractSeperator(result, fileContext.readLines(sourcePath));
+    printer.printLine("Running %s.".formatted(ParserConstants.FILL_DATA));
+
+    var isSuccess = result.path().map(path -> fileContext.write(path, parsed.content()))
+        .orElseGet(() -> fileContext.write(Path.of(""), parsed.content())); // empty path, will generate a failure at FileContext
+
+    printer.printLine("Task finished.");
+    serializer.serialize(new ApplicationContext(parsed.content(), parsed.seperator()));
+    return isSuccess ? List.of(parsed.content()) : List.of("");
   }
 
-  private List<String> readSourceFile() {
-    Path path = Paths.get(sourcePath);
-    String content = "";
-    try {
-      content = Files.readString(path);
-    } catch (IOException e) {
-      printer.printError("Source file can't be read. Contact me for troubleshooting.");
-    }
-    return Arrays.asList(content.replaceAll("\\r", "").split("\n"));
+  private ContentAndSeperator extractSeperator(final ParsingResult result, final List<String> content) {
+    return result.seperator()
+        .map(seperator -> applySeperator(content, seperator.getContent()))
+        .orElseGet(() -> applySeperator(content, CommandConstants.DEFAULT_SEPERATOR));
   }
 
-  private void overwriteFile(final ParsingResult result,
-      final List<String> content) {
-    try (FileWriter writer = new FileWriter(result.path().orElse(Path.of("")).toFile())) {
-      writer.write(extractSeperator(result, content));
-    } catch (IOException e) {
-      printer.printError("Given path can't be read. Terminating gracefully.");
-    }
-  }
-
-  private String extractSeperator(final ParsingResult result, final List<String> content) {
-    if (result.seperator().isPresent()) {
-      return applySeperator(content, result.seperator().get().getContent());
-    } else {
-      return applySeperator(content, DEFAULT_SEPERATOR);
-    }
-  }
-
-  private String applySeperator(final List<String> content, final String seperator) {
-    var tmp = content.stream()
+  private ContentAndSeperator applySeperator(final List<String> content, final String seperator) {
+    var str = content.stream()
         .map(current -> "%s %s".formatted(current, seperator))
         .collect(Collectors.joining("\n"));
 
-    // in lack of a better place, serialize over here
-    serializer.serialize(new ApplicationContext(tmp, seperator));
-
-    return tmp;
+    return new ContentAndSeperator(str, seperator);
   }
+
+  record ContentAndSeperator(String content, String seperator) { }
 }

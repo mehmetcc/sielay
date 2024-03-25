@@ -7,7 +7,6 @@ import org.mehmetcc.parser.Parser;
 import org.mehmetcc.parser.ParsingResult;
 
 public class Main {
-
   public static void main(String[] args) {
     Parser parser = new Parser();
     CliCommandClient client = new CliCommandClient();

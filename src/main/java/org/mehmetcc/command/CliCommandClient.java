@@ -5,7 +5,6 @@ import org.mehmetcc.parser.ParserConstants;
 import org.mehmetcc.parser.ParsingResult;
 
 public class CliCommandClient {
-
   public void execute(ParsingResult result) {
     Printer printer = new Printer(result.isVerbose());
     String content = result.command().getContent();

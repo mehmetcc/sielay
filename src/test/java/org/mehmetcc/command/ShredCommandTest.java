@@ -1,91 +1,120 @@
 package org.mehmetcc.command;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.atLeast;
+import static org.mockito.Mockito.atMost;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.nio.file.Path;
 import java.util.Optional;
-import javax.swing.text.html.Option;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mehmetcc.io.FileContext;
 import org.mehmetcc.io.Printer;
 import org.mehmetcc.parser.ParsingResult;
 import org.mehmetcc.parser.Token;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
+@ExtendWith(MockitoExtension.class)
 class ShredCommandTest {
+  @Mock
+  Printer printer;
 
-  @TempDir
-  File temporaryDirectory;
+  @Mock
+  FileContext fileContext;
 
-  @TempDir
-  File targetFile;
-
-  PrintStream standardOut;
-  ByteArrayOutputStream outputStreamCaptor;
-
-
-  ShredCommand dut;
+  ShredCommand shredCommand;
 
   @BeforeEach
-  void setup() throws IOException {
-    targetFile = new File(temporaryDirectory, "sting.txt");
-    Files.writeString(targetFile.toPath(),
-        "I'm an alien, I'm a legal alien, I'm an Englishman in New York");
-
-    dut = new ShredCommand(new Printer(false));
-
-    standardOut = System.out;
-    outputStreamCaptor = new ByteArrayOutputStream();
-
-    System.setOut(new PrintStream(outputStreamCaptor));
-
+  void setup() {
+    shredCommand = new ShredCommand("some/path", printer, fileContext);
   }
 
   @Test
-  void validPathGivenShouldOverwriteAndDeleteFile() {
-    ParsingResult result = new ParsingResult(Token.command("shred"),
-        Optional.of(targetFile.toPath()),
+  void whenValidInputGivenShouldGenerateSuccessfulOutput() {
+    // Data Preparation
+    ParsingResult data = new ParsingResult(Token.command("shred"),
+        Optional.of(Path.of("some/path")),
         false,
         false,
         Optional.empty());
 
-    dut.execute(result);
+    // Stubbing
+    when(fileContext.read(any())).thenReturn("I am mayalying the lake.");
+    when(fileContext.exists(any())).thenReturn(true);
+    when(fileContext.write(any(), any())).thenReturn(true);
 
-    assertFalse(Files.exists(targetFile.toPath()));
+    // Interaction
+    var result = shredCommand.execute(data);
+
+    // Verification
+    verify(fileContext).read(any());
+    verify(fileContext).exists(any());
+    verify(fileContext, atLeast(3)).write(any(), any());
+
+    // Assertions
+    assertThat(result).hasSize(1)
+        .element(0)
+        .isEqualTo("I am mayalying the lake.");
   }
 
   @Test
-  void invalidPathGivenShouldWriteStdOut() {
-    ParsingResult result = new ParsingResult(Token.command("shred"),
-        Optional.of(Paths.get("buralar/hep/dutluktu")),
+  void whenFaultyWriteHappensInsideApplicationContextShouldCallWriteFunctionOnlyOnce() {
+    // Data Preparation
+    ParsingResult data = new ParsingResult(Token.command("shred"),
+        Optional.of(Path.of("some/path")),
         false,
         false,
         Optional.empty());
 
-    dut.execute(result);
+    // Stubbing
+    when(fileContext.read(any())).thenReturn("I am mayalying the lake.");
+    when(fileContext.exists(any())).thenReturn(true);
+    when(fileContext.write(any(), any())).thenReturn(false);
 
-    assertThat(outputStreamCaptor.toString().trim()).isNotBlank()
-        .isEqualTo("Given path can't be read. Terminating gracefully.");
+    // Interaction
+    var result = shredCommand.execute(data);
+
+    // Verification
+    verify(fileContext).read(any());
+    verify(fileContext).exists(any());
+    verify(fileContext, atMost(1)).write(any(), any());
+
+    // Assertions
+    assertThat(result).hasSize(1)
+        .element(0)
+        .isEqualTo("I am mayalying the lake.");
   }
 
   @Test
-  void invalidSourcePathGivenShouldWriteStdOut() {
-    ParsingResult result = new ParsingResult(Token.command("shred"),
-        Optional.of(targetFile.toPath()),
+  void whenSourceFileReadingFailsShoulParseEmptyString() {
+    // Data Preparation
+    ParsingResult data = new ParsingResult(Token.command("shred"),
+        Optional.of(Path.of("some/path")),
         false,
         false,
         Optional.empty());
 
-    dut = new ShredCommand(new Printer(false), "buralar/da/dutluktu");
-    dut.execute(result);
+    // Stubbing
+    when(fileContext.read(any())).thenReturn("");
+    when(fileContext.exists(any())).thenReturn(true);
+    when(fileContext.write(Path.of("some/path"), "")).thenReturn(true);
 
-    assertThat(outputStreamCaptor.toString().trim()).isNotBlank()
-        .isEqualTo("Source file can't be read. Contact me for troubleshooting.");
+    // Interaction
+    var result = shredCommand.execute(data);
+
+    // Verification
+    verify(fileContext).read(any());
+    verify(fileContext).exists(any());
+    verify(fileContext, atLeast(3)).write(Path.of("some/path"), "");
+
+    // Assertions
+    assertThat(result).hasSize(1)
+        .element(0)
+        .isEqualTo("");
   }
 }

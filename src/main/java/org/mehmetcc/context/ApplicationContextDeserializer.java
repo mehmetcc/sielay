@@ -6,7 +6,6 @@ import java.nio.file.Path;
 import org.mehmetcc.io.Printer;
 
 public class ApplicationContextDeserializer {
-
   private final Printer printer;
 
   public ApplicationContextDeserializer(final Printer printer) {
@@ -23,8 +22,8 @@ public class ApplicationContextDeserializer {
 
     try {
       content = mapper.readValue(path.toFile(), ApplicationContext.class);
-      printer.printLine("ApplicationContext from a previous session has recovered: ");
-      printer.printLine(content.toString());
+      //printer.printLine("ApplicationContext from a previous session has recovered: ");
+      //printer.printLine(content.toString());
     } catch (IOException e) {
       printer.printError("Error while deserializing ApplicationContext. Gracefully terminating");
       System.exit(0);

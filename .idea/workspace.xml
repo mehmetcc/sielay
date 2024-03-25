@@ -1,11 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="sielay:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="984f1b0c-2cb0-4a6c-a20c-71e11d6aee28" name="Changes" comment="Add database connector">
+    <list default="true" id="984f1b0c-2cb0-4a6c-a20c-71e11d6aee28" name="Changes" comment="Refactor if statement to switch">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/command/CommandConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/command/DumpDatabaseCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/io/FileContext.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/mehmetcc/command/DumpDatabaseCommandTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/mehmetcc/command/FillDataCommandIntegrationTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/mehmetcc/command/ShredCommandIntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mehmetcc/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mehmetcc/command/CliCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/command/CliCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mehmetcc/command/CliCommandClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/command/CliCommandClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mehmetcc/command/FillDataCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/command/FillDataCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mehmetcc/command/ShredCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/command/ShredCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mehmetcc/context/ApplicationContextConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/context/ApplicationContextConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mehmetcc/context/ApplicationContextDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/context/ApplicationContextDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mehmetcc/context/ApplicationContextSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/context/ApplicationContextSerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mehmetcc/io/DatabaseConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/io/DatabaseConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mehmetcc/io/Printer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/io/Printer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/mehmetcc/parser/Validator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/parser/Validator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/mehmetcc/command/FillDataCommandTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/mehmetcc/command/FillDataCommandTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/mehmetcc/command/ShredCommandTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/mehmetcc/command/ShredCommandTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/mehmetcc/parser/ValidatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/mehmetcc/parser/ValidatorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,17 +93,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;create.test.in.the.same.root&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Java&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "create.test.in.the.same.root": "true",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.14648438",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.sourceCode.Java"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Knuth\Desktop\Projects\sielay\src\main\resources" />
@@ -88,17 +117,17 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="org.mehmetcc.command" />
       <recent name="org.mehmetcc.io" />
       <recent name="org.mehmetcc.context" />
       <recent name="org.mehmetcc.parser" />
-      <recent name="org.mehmetcc.command" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Tests in 'sielay.test'">
+  <component name="RunManager" selected="Gradle.ValidatorTest.multipleArgumentsGivenShouldGenerateFailure">
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.mehmetcc.Main" />
       <module name="sielay.main" />
-      <option name="PROGRAM_PARAMETERS" value="fill-data mickey-mouse.txt -S ; -V" />
+      <option name="PROGRAM_PARAMETERS" value="shred -V" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.mehmetcc.*" />
@@ -119,7 +148,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ApplicationContextDeserializerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="DumpDatabaseCommandTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -132,7 +161,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;org.mehmetcc.context.ApplicationContextDeserializerTest&quot;" />
+            <option value="&quot;org.mehmetcc.command.DumpDatabaseCommandTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -142,7 +171,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ApplicationContextDeserializerTest.shouldDeserialize" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="DumpDatabaseCommandTest.whenPathAndSeperatorIsSetShouldExtractAccordingly" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -155,7 +184,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;org.mehmetcc.context.ApplicationContextDeserializerTest.shouldDeserialize&quot;" />
+            <option value="&quot;org.mehmetcc.command.DumpDatabaseCommandTest.whenPathAndSeperatorIsSetShouldExtractAccordingly&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -165,7 +194,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="DatabaseConnectorTest.shouldCreateDatabase" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="DumpDatabaseCommandTest.whenPathIsSetButSeperatorIsNotAroundShouldExtractFromFileAndUseDefaultSeperator" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -178,30 +207,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;org.mehmetcc.io.DatabaseConnectorTest.shouldCreateDatabase&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="FillDataCommandTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;org.mehmetcc.command.FillDataCommandTest&quot;" />
+            <option value="&quot;org.mehmetcc.command.DumpDatabaseCommandTest.whenPathIsSetButSeperatorIsNotAroundShouldExtractFromFileAndUseDefaultSeperator&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -232,21 +238,44 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="ValidatorTest.multipleArgumentsGivenShouldGenerateFailure" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;org.mehmetcc.parser.ValidatorTest.multipleArgumentsGivenShouldGenerateFailure&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Application.Main" />
-      <item itemvalue="Gradle.DatabaseConnectorTest.shouldCreateDatabase" />
-      <item itemvalue="Gradle.FillDataCommandTest" />
-      <item itemvalue="Gradle.ApplicationContextDeserializerTest" />
-      <item itemvalue="Gradle.ApplicationContextDeserializerTest.shouldDeserialize" />
+      <item itemvalue="Gradle.ValidatorTest.multipleArgumentsGivenShouldGenerateFailure" />
+      <item itemvalue="Gradle.DumpDatabaseCommandTest" />
+      <item itemvalue="Gradle.DumpDatabaseCommandTest.whenPathAndSeperatorIsSetShouldExtractAccordingly" />
+      <item itemvalue="Gradle.DumpDatabaseCommandTest.whenPathIsSetButSeperatorIsNotAroundShouldExtractFromFileAndUseDefaultSeperator" />
       <item itemvalue="Gradle.Tests in 'sielay.test'" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.ValidatorTest.multipleArgumentsGivenShouldGenerateFailure" />
         <item itemvalue="Gradle.Tests in 'sielay.test'" />
-        <item itemvalue="Gradle.DatabaseConnectorTest.shouldCreateDatabase" />
-        <item itemvalue="Gradle.FillDataCommandTest" />
-        <item itemvalue="Gradle.ApplicationContextDeserializerTest" />
-        <item itemvalue="Gradle.ApplicationContextDeserializerTest.shouldDeserialize" />
+        <item itemvalue="Gradle.DumpDatabaseCommandTest" />
+        <item itemvalue="Gradle.DumpDatabaseCommandTest.whenPathAndSeperatorIsSetShouldExtractAccordingly" />
+        <item itemvalue="Gradle.DumpDatabaseCommandTest.whenPathIsSetButSeperatorIsNotAroundShouldExtractFromFileAndUseDefaultSeperator" />
       </list>
     </recent_temporary>
   </component>
@@ -343,7 +372,21 @@
       <option name="project" value="LOCAL" />
       <updated>1711361691813</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Inline some functions">
+      <created>1711362204562</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1711362204562</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Refactor if statement to switch">
+      <created>1711362902283</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1711362902283</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -367,19 +410,26 @@
     <MESSAGE value="Add application context" />
     <MESSAGE value="Add comment" />
     <MESSAGE value="Add database connector" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add database connector" />
+    <MESSAGE value="Inline some functions" />
+    <MESSAGE value="Refactor if statement to switch" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor if statement to switch" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/sielay$ShredCommandTest.ic" NAME="ShredCommandTest Coverage Results" MODIFIED="1711303173627" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/sielay$ValidatorTest.ic" NAME="ValidatorTest Coverage Results" MODIFIED="1711321959302" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sielay$DumpDatabaseCommandTest_whenPathIsSetButSeperatorIsNotAroundShouldExtractFromFileAndUseDefaultSeperator.ic" NAME="DumpDatabaseCommandTest.whenPathIsSetButSeperatorIsNotAroundShouldExtractFromFileAndUseDefaultSeperator Coverage Results" MODIFIED="1711382083427" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sielay$DumpDatabaseCommandTest.ic" NAME="DumpDatabaseCommandTest Coverage Results" MODIFIED="1711382245057" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/sielay$ApplicationContextDeserializerTest.ic" NAME="ApplicationContextDeserializerTest Coverage Results" MODIFIED="1711324444629" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/sielay$FillDataCommandTest.ic" NAME="FillDataCommandTest Coverage Results" MODIFIED="1711311473999" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/sielay$FillDataCommandTest_validPathGivenShouldWriteFile.ic" NAME="FillDataCommandTest.validPathGivenShouldWriteFile Coverage Results" MODIFIED="1711311167680" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/sielay$Tests_in__sielay_test_.ic" NAME="Tests in 'sielay.test' Coverage Results" MODIFIED="1711361697539" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sielay$Tests_in__sielay_test_.ic" NAME="Tests in 'sielay.test' Coverage Results" MODIFIED="1711382266421" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/sielay$LexerTest.ic" NAME="LexerTest Coverage Results" MODIFIED="1711204063520" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sielay$LexerTest_singleArgumentGivenShouldScanCommandsAndGenerateSingletonList.ic" NAME="LexerTest.singleArgumentGivenShouldScanCommandsAndGenerateSingletonList Coverage Results" MODIFIED="1711202191310" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sielay$FillDataCommandTest_validInputGivenShouldGenerateSuccessfully.ic" NAME="FillDataCommandTest.validInputGivenShouldGenerateSuccessfully Coverage Results" MODIFIED="1711377631237" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sielay$ShredCommandTest_faultyWriteGivenShouldTerminateTheExecution.ic" NAME="ShredCommandTest.faultyWriteGivenShouldTerminateTheExecution Coverage Results" MODIFIED="1711379987392" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sielay$ShredCommandTest.ic" NAME="ShredCommandTest Coverage Results" MODIFIED="1711380010799" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sielay$ValidatorTest.ic" NAME="ValidatorTest Coverage Results" MODIFIED="1711321959302" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sielay$FillDataCommandTest.ic" NAME="FillDataCommandTest Coverage Results" MODIFIED="1711378816403" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/sielay$ValidatorTest_multipleArgumentsGivenShouldGenerateFailure.ic" NAME="ValidatorTest.multipleArgumentsGivenShouldGenerateFailure Coverage Results" MODIFIED="1711305302128" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/sielay$DatabaseConnectorTest_shouldCreateDatabase.ic" NAME="DatabaseConnectorTest.shouldCreateDatabase Coverage Results" MODIFIED="1711361642758" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/sielay$LexerTest_singleArgumentGivenShouldScanCommandsAndGenerateSingletonList.ic" NAME="LexerTest.singleArgumentGivenShouldScanCommandsAndGenerateSingletonList Coverage Results" MODIFIED="1711202191310" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/sielay$ValidatorTest_seperatorDeclaredButNotGivenShouldGenerateFailure.ic" NAME="ValidatorTest.seperatorDeclaredButNotGivenShouldGenerateFailure Coverage Results" MODIFIED="1711212198034" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sielay$FillDataCommandTest_invalidInputGivenShouldGenerateEmptyList.ic" NAME="FillDataCommandTest.invalidInputGivenShouldGenerateEmptyList Coverage Results" MODIFIED="1711377945752" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

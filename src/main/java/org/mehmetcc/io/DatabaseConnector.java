@@ -1,6 +1,5 @@
 package org.mehmetcc.io;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -15,7 +14,6 @@ import java.util.UUID;
 
 
 public class DatabaseConnector {
-
   private final Printer printer;
 
   public DatabaseConnector(final Printer printer) {
@@ -49,13 +47,18 @@ public class DatabaseConnector {
       printer.printLine("Database table <lines> have been created");
 
       for (int i = 0; i < content.size(); i++) {
-        statement.executeUpdate("insert into lines values(%d, '%s')".formatted(i, content.get(i)));
+        statement.executeUpdate(
+            "insert into lines values(%d, '%s')".formatted(i, trimString(content.get(i))));
       }
 
     } catch (SQLException e) {
       printer.printError("Failed to fill in the database.");
       printer.printError(e.getMessage());
     }
+  }
+
+  private String trimString(final String str) {
+    return str.replace("'", "\"");
   }
 
   private void createDirectory() {

@@ -13,9 +13,8 @@ public class Printer {
   }
 
   public void printLine(final String content) {
-    if (isVerbose) {
+    if (isVerbose)
       System.out.println(content);
-    }
   }
 
   public void printError(final String content) {

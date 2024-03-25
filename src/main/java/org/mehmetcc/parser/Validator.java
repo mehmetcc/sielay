@@ -102,9 +102,11 @@ class Validator {
     var command = tokens.get(0);
 
     if (foundAtIndex != -1) {
-      if (!command.getContent().equals(ParserConstants.FILL_DATA)) {
+      if (!command.getContent().equals(ParserConstants.FILL_DATA) && !command.getContent()
+          .equals(ParserConstants.DUMP_DB)) {
         failures.add(
-            "Seperator flag can only be used with %s command".formatted(ParserConstants.FILL_DATA));
+            "Seperator flag can only be used with %s and %s commands.".formatted(
+                ParserConstants.FILL_DATA, ParserConstants.DUMP_DB));
       }
     }
   }
@@ -117,7 +119,7 @@ class Validator {
         .size();
 
     if (foundAtIndex == -1) { // where no seperator is around
-      if (argumentCount != 1) {
+      if (argumentCount != 1 && !tokens.get(0).getContent().equals(ParserConstants.DUMP_DB)) {
         failures.add(
             "Faulty number of arguments. Either the seperator or the file path is missing.");
       }

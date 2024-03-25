@@ -5,7 +5,6 @@ import java.io.File;
 import org.mehmetcc.io.Printer;
 
 public class ApplicationContextSerializer {
-
   private final Printer printer;
 
   public ApplicationContextSerializer(final Printer printer) {

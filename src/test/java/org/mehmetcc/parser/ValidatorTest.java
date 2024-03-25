@@ -105,7 +105,7 @@ class ValidatorTest {
 
   @Test
   void multipleArgumentsGivenShouldGenerateFailure() {
-    var input = List.of(Token.command("dump-db"),
+    var input = List.of(Token.command("shred"),
         new Token(TokenType.STRING, "/some/path/here"),
         new Token(TokenType.STRING, "/some/other/path/here"));
     var output = dut.check(input);
@@ -135,7 +135,7 @@ class ValidatorTest {
     var output = dut.check(input);
 
     assertThat(output).isNotEmpty()
-        .contains("Seperator flag can only be used with fill-data command");
+        .contains("Seperator flag can only be used with fill-data and dump-db commands.");
   }
 
   @Test
