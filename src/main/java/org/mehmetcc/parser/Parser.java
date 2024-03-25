@@ -45,6 +45,7 @@ public class Parser {
     Optional<Token> seperator = Optional.empty();
 
     for (int i = 0; i < tokens.size(); i++) {
+      // Traverse the token list and match based on Token::getType
       var current = tokens.get(i);
       if (current.getType() == TokenType.COMMAND) { // Set command
         command = current;
