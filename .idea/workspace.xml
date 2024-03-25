@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="984f1b0c-2cb0-4a6c-a20c-71e11d6aee28" name="Changes" comment="Fix argument protection">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/context/ApplicationContext.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/context/ApplicationContextConstants.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/context/ApplicationContextDeserializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/context/ApplicationContextSerializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+    <list default="true" id="984f1b0c-2cb0-4a6c-a20c-71e11d6aee28" name="Changes" comment="Add application context">
       <change beforePath="$PROJECT_DIR$/src/main/java/org/mehmetcc/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mehmetcc/command/FillDataCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/command/FillDataCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mehmetcc/context/ApplicationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/context/ApplicationContext.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,9 +48,9 @@
         <option value="AnnotationType" />
         <option value="Enum" />
         <option value="Interface" />
-        <option value="JUnit5 Test Class" />
         <option value="Record" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -94,6 +90,7 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="org.mehmetcc.context" />
       <recent name="org.mehmetcc.parser" />
       <recent name="org.mehmetcc.command" />
     </key>
@@ -102,7 +99,7 @@
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.mehmetcc.Main" />
       <module name="sielay.main" />
-      <option name="PROGRAM_PARAMETERS" value="fill-data -S ; -V" />
+      <option name="PROGRAM_PARAMETERS" value="fill-data mickey-mouse.txt -S ; -V" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.mehmetcc.*" />
@@ -123,7 +120,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LexerTest.singleCommandWithStringFieldGivenShouldScanAndGenerateList" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ApplicationContextDeserializerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -136,7 +133,30 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;org.mehmetcc.parser.LexerTest.singleCommandWithStringFieldGivenShouldScanAndGenerateList&quot;" />
+            <option value="&quot;org.mehmetcc.context.ApplicationContextDeserializerTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="ApplicationContextDeserializerTest.shouldDeserialize" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;org.mehmetcc.context.ApplicationContextDeserializerTest.shouldDeserialize&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -213,44 +233,21 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ValidatorTest.unknownCommandGivenShouldGenerateFailure" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;org.mehmetcc.parser.ValidatorTest.unknownCommandGivenShouldGenerateFailure&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Application.Main" />
+      <item itemvalue="Gradle.ApplicationContextDeserializerTest" />
+      <item itemvalue="Gradle.ApplicationContextDeserializerTest.shouldDeserialize" />
       <item itemvalue="Gradle.ValidatorTest.seperatorFlagUsedWithFaultyCommandShouldGenerateFailure" />
-      <item itemvalue="Gradle.ValidatorTest.unknownCommandGivenShouldGenerateFailure" />
-      <item itemvalue="Gradle.LexerTest.singleCommandWithStringFieldGivenShouldScanAndGenerateList" />
       <item itemvalue="Gradle.Tests in 'sielay.test'" />
       <item itemvalue="Gradle.ValidatorTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.ApplicationContextDeserializerTest" />
+        <item itemvalue="Gradle.ApplicationContextDeserializerTest.shouldDeserialize" />
         <item itemvalue="Gradle.ValidatorTest" />
         <item itemvalue="Gradle.ValidatorTest.seperatorFlagUsedWithFaultyCommandShouldGenerateFailure" />
         <item itemvalue="Gradle.Tests in 'sielay.test'" />
-        <item itemvalue="Gradle.ValidatorTest.unknownCommandGivenShouldGenerateFailure" />
-        <item itemvalue="Gradle.LexerTest.singleCommandWithStringFieldGivenShouldScanAndGenerateList" />
       </list>
     </recent_temporary>
   </component>
@@ -319,7 +316,14 @@
       <option name="project" value="LOCAL" />
       <updated>1711322533420</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Add application context">
+      <created>1711324549813</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1711324549813</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -340,11 +344,13 @@
     <MESSAGE value="Fix some failure messages" />
     <MESSAGE value="Add some validations" />
     <MESSAGE value="Fix argument protection" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix argument protection" />
+    <MESSAGE value="Add application context" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add application context" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/sielay$ShredCommandTest.ic" NAME="ShredCommandTest Coverage Results" MODIFIED="1711303173627" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/sielay$ValidatorTest.ic" NAME="ValidatorTest Coverage Results" MODIFIED="1711321959302" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sielay$ApplicationContextDeserializerTest.ic" NAME="ApplicationContextDeserializerTest Coverage Results" MODIFIED="1711324444629" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/sielay$FillDataCommandTest.ic" NAME="FillDataCommandTest Coverage Results" MODIFIED="1711311473999" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/sielay$Tests_in__sielay_test_.ic" NAME="Tests in 'sielay.test' Coverage Results" MODIFIED="1711275877531" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/sielay$FillDataCommandTest_validPathGivenShouldWriteFile.ic" NAME="FillDataCommandTest.validPathGivenShouldWriteFile Coverage Results" MODIFIED="1711311167680" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

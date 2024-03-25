@@ -8,6 +8,8 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.mehmetcc.context.ApplicationContext;
+import org.mehmetcc.context.ApplicationContextSerializer;
 import org.mehmetcc.io.Printer;
 import org.mehmetcc.parser.ParsingResult;
 
@@ -19,14 +21,18 @@ public class FillDataCommand implements CliCommand {
 
   private final Printer printer;
 
+  private final ApplicationContextSerializer serializer;
+
   public FillDataCommand(final Printer printer) {
     this.printer = printer;
     this.sourcePath = "src/main/resources/queen-of-hearts.txt";
+    this.serializer = new ApplicationContextSerializer(printer);
   }
 
   public FillDataCommand(final Printer printer, final String sourcePath) {
     this.printer = printer;
     this.sourcePath = sourcePath;
+    this.serializer = new ApplicationContextSerializer(printer);
   }
 
 
@@ -67,8 +73,13 @@ public class FillDataCommand implements CliCommand {
   }
 
   private String applySeperator(final List<String> content, final String seperator) {
-    return content.stream()
+    var tmp = content.stream()
         .map(current -> "%s %s".formatted(current, seperator))
         .collect(Collectors.joining("\n"));
+
+    // in lack of a better place, serialize over here
+    serializer.serialize(new ApplicationContext(tmp, seperator));
+
+    return tmp;
   }
 }
