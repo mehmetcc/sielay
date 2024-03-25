@@ -9,6 +9,11 @@ public class CliCommandClient {
     Printer printer = new Printer(result.isVerbose());
     String content = result.command().getContent();
 
+    if (result.isHelp()) {
+      new HelpCommand().execute();
+      return;
+    }
+
     switch (content) {
       case ParserConstants.SHRED -> new ShredCommand(printer).execute(result);
       case ParserConstants.FILL_DATA -> new FillDataCommand(printer).execute(result);

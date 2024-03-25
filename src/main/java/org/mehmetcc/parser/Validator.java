@@ -16,13 +16,10 @@ class Validator {
   }
 
   List<String> check(final List<Token> tokens) {
-    if (checkIfEmptyList(tokens)) {
+    if (checkIfEmptyList(tokens))
       return failures;
-    }
-
-    // TODO another if else should be over here, one running runValidations while other running
-    // TODO runHelpValidations
-    runValidations(tokens);
+    else if (!checkIfHelp(tokens))
+      runValidations(tokens);
     return failures;
   }
 
@@ -49,6 +46,15 @@ class Validator {
     return false;
   }
 
+  private Boolean checkIfHelp(final List<Token> tokens) {
+    for (Token token : tokens) {
+      if (token.getContent().equals(ParserConstants.HELP) ||
+          token.getContent().equals(ParserConstants.HELP_SHORTENED))
+        return true;
+    }
+    return false;
+  }
+
   private void checkValidCommand(final List<Token> tokens) {
     var filtered = filterCommands(tokens);
     var validCommands = validCommands();
@@ -64,51 +70,42 @@ class Validator {
   private void checkFirstCommand(final List<Token> tokens) {
     var first = tokens.get(0);
 
-    if (first.getType() != TokenType.COMMAND) {
+    if (first.getType() != TokenType.COMMAND)
       failures.add("First token should be a command.");
-    }
   }
 
   private void checkIfArgumentsAreCorrect(final List<Token> tokens) {
     var first = tokens.get(0);
 
-    if (first.getContent().equals(ParserConstants.SHRED) || first.getContent()
-        .equals(ParserConstants.FILL_DATA)) {
-      if (tokens.get(1).getType() != TokenType.STRING) {
+    if (first.getContent().equals(ParserConstants.SHRED) ||
+        first.getContent().equals(ParserConstants.FILL_DATA))
+      if (tokens.get(1).getType() != TokenType.STRING)
         failures.add("No path string given.");
-      }
-    }
   }
 
   private void checkSeperator(final List<Token> tokens) {
     var foundAtIndex = findSeperator(tokens);
 
-    if (foundAtIndex != -1) {
+    if (foundAtIndex != -1)
       if (foundAtIndex + 1 < tokens.size()) {
         var lookup = tokens.get(foundAtIndex + 1);
-        if (lookup.getType() != TokenType.STRING) {
+        if (lookup.getType() != TokenType.STRING)
           failures.add(
               "Seperator flag is declared but no seperator has been given. Seperator should be positioned just after the flag itself.");
-        }
-      } else {
+      } else
         failures.add(
             "Seperator flag is declared but no seperator has been given. Seperator should be positioned just after the flag itself.");
-      }
-    }
   }
 
   private void checkIfSeperatorIsUsedWithCorrectCommand(final List<Token> tokens) {
     var foundAtIndex = findSeperator(tokens);
     var command = tokens.get(0);
 
-    if (foundAtIndex != -1) {
-      if (!command.getContent().equals(ParserConstants.FILL_DATA) && !command.getContent()
-          .equals(ParserConstants.DUMP_DB)) {
-        failures.add(
-            "Seperator flag can only be used with %s and %s commands.".formatted(
-                ParserConstants.FILL_DATA, ParserConstants.DUMP_DB));
-      }
-    }
+    if (foundAtIndex != -1)
+      if (!command.getContent().equals(ParserConstants.FILL_DATA) &&
+          !command.getContent().equals(ParserConstants.DUMP_DB))
+        failures.add("Seperator flag can only be used with %s and %s commands."
+                .formatted(ParserConstants.FILL_DATA, ParserConstants.DUMP_DB));
   }
 
   private void checkArgumentCount(final List<Token> tokens) {
@@ -118,17 +115,12 @@ class Validator {
         .toList()
         .size();
 
-    if (foundAtIndex == -1) { // where no seperator is around
-      if (argumentCount != 1 && !tokens.get(0).getContent().equals(ParserConstants.DUMP_DB)) {
-        failures.add(
-            "Faulty number of arguments. Either the seperator or the file path is missing.");
-      }
-    } else { // there is a seperator
-      if (argumentCount != 2) {
-        failures.add(
-            "Faulty number of arguments. Either the seperator or the file path is missing.");
-      }
-    }
+    if (foundAtIndex == -1) // where no seperator is around
+      if (argumentCount != 1 && !tokens.get(0).getContent().equals(ParserConstants.DUMP_DB))
+        failures.add("Faulty number of arguments. Either the seperator or the file path is missing.");
+     else// there is a seperator
+      if (argumentCount != 2)
+        failures.add("Faulty number of arguments. Either the seperator or the file path is missing.");
   }
 
   private Integer findSeperator(final List<Token> tokens) {
@@ -137,8 +129,8 @@ class Validator {
     loop:
     for (int i = 0; i < tokens.size(); i++) {
       var current = tokens.get(i);
-      if (current.getContent().equals(ParserConstants.SEPERATOR) || current.getContent()
-          .equals(ParserConstants.SEPERATOR_SHORTENED)) {
+      if (current.getContent().equals(ParserConstants.SEPERATOR) ||
+          current.getContent().equals(ParserConstants.SEPERATOR_SHORTENED)) {
         found = i;
         break loop; // devilishly necessary
       }
@@ -149,11 +141,10 @@ class Validator {
   private void checkNumberOfCommands(final List<Token> tokens) {
     var filtered = getCommands(tokens);
 
-    if (filtered.size() == 0) {
+    if (filtered.size() == 0)
       failures.add("No commands given.");
-    } else if (filtered.size() != 1) {
+    else if (filtered.size() != 1)
       failures.add("Multiple commands given.");
-    }
   }
 
   private void checkValidFlags(final List<Token> tokens) {
