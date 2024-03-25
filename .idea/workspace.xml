@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="984f1b0c-2cb0-4a6c-a20c-71e11d6aee28" name="Changes" comment="Add application context">
+    <list default="true" id="984f1b0c-2cb0-4a6c-a20c-71e11d6aee28" name="Changes" comment="Add comment">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/io/DatabaseConnector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/mehmetcc/io/DatabaseConnectorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/mehmetcc/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mehmetcc/command/FillDataCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/command/FillDataCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mehmetcc/context/ApplicationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mehmetcc/context/ApplicationContext.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,12 +92,13 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="org.mehmetcc.io" />
       <recent name="org.mehmetcc.context" />
       <recent name="org.mehmetcc.parser" />
       <recent name="org.mehmetcc.command" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Gradle.DatabaseConnectorTest.shouldCreateDatabase">
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.mehmetcc.Main" />
       <module name="sielay.main" />
@@ -166,6 +169,52 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="DatabaseConnectorTest.shouldCreateDatabase" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;org.mehmetcc.io.DatabaseConnectorTest.shouldCreateDatabase&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="FillDataCommandTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;org.mehmetcc.command.FillDataCommandTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="Tests in 'sielay.test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -187,66 +236,20 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ValidatorTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;org.mehmetcc.parser.ValidatorTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="ValidatorTest.seperatorFlagUsedWithFaultyCommandShouldGenerateFailure" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;org.mehmetcc.parser.ValidatorTest.seperatorFlagUsedWithFaultyCommandShouldGenerateFailure&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Application.Main" />
+      <item itemvalue="Gradle.DatabaseConnectorTest.shouldCreateDatabase" />
+      <item itemvalue="Gradle.FillDataCommandTest" />
       <item itemvalue="Gradle.ApplicationContextDeserializerTest" />
       <item itemvalue="Gradle.ApplicationContextDeserializerTest.shouldDeserialize" />
-      <item itemvalue="Gradle.ValidatorTest.seperatorFlagUsedWithFaultyCommandShouldGenerateFailure" />
       <item itemvalue="Gradle.Tests in 'sielay.test'" />
-      <item itemvalue="Gradle.ValidatorTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.DatabaseConnectorTest.shouldCreateDatabase" />
+        <item itemvalue="Gradle.FillDataCommandTest" />
         <item itemvalue="Gradle.ApplicationContextDeserializerTest" />
         <item itemvalue="Gradle.ApplicationContextDeserializerTest.shouldDeserialize" />
-        <item itemvalue="Gradle.ValidatorTest" />
-        <item itemvalue="Gradle.ValidatorTest.seperatorFlagUsedWithFaultyCommandShouldGenerateFailure" />
         <item itemvalue="Gradle.Tests in 'sielay.test'" />
       </list>
     </recent_temporary>
@@ -323,7 +326,21 @@
       <option name="project" value="LOCAL" />
       <updated>1711324549813</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Add application context">
+      <created>1711325199411</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1711325199411</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Add comment">
+      <created>1711358109887</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1711358109887</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -345,7 +362,19 @@
     <MESSAGE value="Add some validations" />
     <MESSAGE value="Fix argument protection" />
     <MESSAGE value="Add application context" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add application context" />
+    <MESSAGE value="Add comment" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add comment" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/org/mehmetcc/io/DatabaseConnectorTest.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/sielay$ShredCommandTest.ic" NAME="ShredCommandTest Coverage Results" MODIFIED="1711303173627" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
