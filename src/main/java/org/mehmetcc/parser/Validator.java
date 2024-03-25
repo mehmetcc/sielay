@@ -50,13 +50,8 @@ class Validator {
   }
 
   private void checkValidCommand(final List<Token> tokens) {
-    var filtered = tokens.stream()
-        .filter(current -> current.getType() == TokenType.COMMAND)
-        .map(Token::getContent)
-        .toList();
-    var validCommands = ParserConstants.COMMANDS.keySet()
-        .stream()
-        .toList();
+    var filtered = filterCommands(tokens);
+    var validCommands = validCommands();
 
     for (String command : filtered) {
       if (!validCommands.contains(command)) {
@@ -150,9 +145,7 @@ class Validator {
   }
 
   private void checkNumberOfCommands(final List<Token> tokens) {
-    var filtered = tokens.stream()
-        .filter(current -> current.getType() == TokenType.COMMAND)
-        .toList();
+    var filtered = getCommands(tokens);
 
     if (filtered.size() == 0) {
       failures.add("No commands given.");
@@ -162,18 +155,45 @@ class Validator {
   }
 
   private void checkValidFlags(final List<Token> tokens) {
-    var flags = tokens.stream()
-        .filter(current -> current.getContent().startsWith("--") || current.getContent()
-            .startsWith("-"))
-        .map(Token::getContent)
-        .toList();
-    var valid = ParserConstants.FLAGS.keySet().stream().toList();
+    var flags = filterFlags(tokens);
+    var validCommands = validFlags();
 
     for (String flag : flags) {
-      if (!valid.contains(flag)) {
+      if (!validCommands.contains(flag)) {
         failures.add("Unknown flag.");
         return;
       }
     }
+  }
+
+  private List<String> filterFlags(final List<Token> tokens) {
+    return tokens.stream()
+        .filter(current -> current.getContent().startsWith("--") || current.getContent()
+            .startsWith("-"))
+        .map(Token::getContent)
+        .toList();
+  }
+
+  private List<String> validFlags() {
+    return ParserConstants.FLAGS.keySet().stream().toList();
+  }
+
+  private List<String> filterCommands(final List<Token> tokens) {
+    return tokens.stream()
+        .filter(current -> current.getType() == TokenType.COMMAND)
+        .map(Token::getContent)
+        .toList();
+  }
+
+  private List<Token> getCommands(final List<Token> tokens) {
+    return tokens.stream()
+        .filter(current -> current.getType() == TokenType.COMMAND)
+        .toList();
+  }
+
+  private List<String> validCommands() {
+    return ParserConstants.COMMANDS.keySet()
+        .stream()
+        .toList();
   }
 }
